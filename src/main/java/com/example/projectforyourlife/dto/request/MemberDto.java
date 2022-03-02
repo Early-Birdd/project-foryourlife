@@ -1,10 +1,12 @@
-package com.example.projectforyourlife.dto;
+package com.example.projectforyourlife.dto.request;
 
 import com.example.projectforyourlife.entity.Member;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import org.hibernate.validator.constraints.Length;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
@@ -22,6 +24,7 @@ public class MemberDto {
     private String email;
 
     @NotBlank(message = "비밀번호를 입력해주세요.")
+    @Length(min = 8, max = 12, message = "8자리 이상 12자리 이하의 비밀번호를 입력해주세요")
     private String password;
 
     @NotBlank(message = "이름을 입력해주세요.")
@@ -32,6 +35,7 @@ public class MemberDto {
 
     public Member toMember(){
 
+        //MemberDto 를 Member에 빌딩하고 빌딩된 Member를 Service단에서 Repository에 저장 후 MemberResponseDto로 show
         return Member.builder()
                 .email(email)
                 .password(password)
