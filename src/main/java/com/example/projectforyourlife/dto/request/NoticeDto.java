@@ -1,6 +1,5 @@
 package com.example.projectforyourlife.dto.request;
 
-import com.example.projectforyourlife.entity.Member;
 import com.example.projectforyourlife.entity.Notice;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -19,21 +18,14 @@ public class NoticeDto {
     @NotBlank(message = "내용을 입력해주세요.")
     private String content;
 
-
-
-    public Member getWriter(){
-
-        return
-    }
+    private String writer;
 
     public Notice toNotice(){
-
-
 
         return Notice.builder()
                 .title(title)
                 .content(content)
-                .writer()
+                .writer(writer)
                 .build();
     }
 }

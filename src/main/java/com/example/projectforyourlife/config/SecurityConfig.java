@@ -58,11 +58,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .sessionManagement()
                 .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
 
-                .and()
-                .authorizeRequests()
-                .antMatchers("/members/**").permitAll()
-                .anyRequest().authenticated()
-
                 //JwtFilter를 UsernamePasswordAuthenticationFilter 전에 적용
                 .and()
                 .addFilterBefore(new JwtFilter(tokenProvider, redisTemplate), UsernamePasswordAuthenticationFilter.class);

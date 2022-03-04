@@ -29,13 +29,13 @@ public class MemberController {
     }
 
     @GetMapping("/signup/emails/{email}")
-    public ResponseEntity<Boolean> duplicatedEmail(@PathVariable String email){
+    public ResponseEntity<Boolean> duplicatedEmail(@PathVariable("email") String email){
 
         return new ResponseEntity(memberService.validateDuplicatedEmail(email), HttpStatus.OK);
     }
 
     @GetMapping("/signup/nicknames/{nickname}")
-    public ResponseEntity<Boolean> duplicatedNickname(@PathVariable String nickname){
+    public ResponseEntity<Boolean> duplicatedNickname(@PathVariable("nickname") String nickname){
 
         return new ResponseEntity(memberService.validateDuplicateNickname(nickname), HttpStatus.OK);
     }

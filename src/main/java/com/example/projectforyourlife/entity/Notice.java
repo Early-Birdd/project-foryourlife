@@ -1,6 +1,6 @@
 package com.example.projectforyourlife.entity;
 
-import com.example.projectforyourlife.dto.request.NoticeUpdateDto;
+import com.example.projectforyourlife.dto.request.NoticeDto;
 import lombok.*;
 
 import javax.persistence.*;
@@ -24,9 +24,10 @@ public class Notice extends BaseTimeEntity{
     @Column(nullable = false, columnDefinition = "TEXT")
     private String content;
 
+    @Column(nullable = false)
     private String writer;
 
-    public void update(NoticeUpdateDto noticeUpdateDto){
+    public void update(NoticeDto noticeUpdateDto){
 
         this.title = noticeUpdateDto.getTitle();
         this.content = noticeUpdateDto.getContent();
