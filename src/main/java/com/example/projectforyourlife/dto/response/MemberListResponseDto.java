@@ -4,18 +4,14 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-import java.time.LocalDateTime;
-
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
-public class NoticeListResponseDto {
+public class MemberListResponseDto {
 
     private Long id;
 
-    private String title;
-    private String writer;
-
-    private LocalDateTime createdTime;
-    private LocalDateTime modifiedTime;
+    private String email;
+    private String name;
+    private String nickname;
 }

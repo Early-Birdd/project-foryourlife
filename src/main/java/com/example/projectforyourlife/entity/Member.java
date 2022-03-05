@@ -33,4 +33,14 @@ public class Member extends BaseTimeEntity{
     //JPA에 Enum을 String으로 저장
     @Enumerated(EnumType.STRING)
     private Role role;
+
+    public void updateName(String name){
+
+        this.name = name;
+    }
+
+    public void updateNickname(String nickname){
+
+        this.nickname = nickname;
+    }
 }

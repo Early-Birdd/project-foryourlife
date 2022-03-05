@@ -9,19 +9,15 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
-import java.util.List;
-import java.util.stream.Collectors;
 
 @Slf4j
 @Service
 @RequiredArgsConstructor
 public class NoticeService {
 
-    private NoticeRepository noticeRepository;
+    private final NoticeRepository noticeRepository;
 
     @Transactional
     public NoticeResponseDto saveNotice(NoticeDto noticeDto){
@@ -29,7 +25,7 @@ public class NoticeService {
         return NoticeResponseDto.show(noticeRepository.save(noticeDto.toNotice()));
     }
 
-    public Page<NoticeListResponseDto> readAllNotice(Pageable pageable){
+    public Page<NoticeListResponseDto> getAllNotice(Pageable pageable){
 
         Page<Notice> notices = noticeRepository.findAll(pageable);
 
@@ -40,7 +36,7 @@ public class NoticeService {
         return noticeListResponseDtos;
     }
 
-    public NoticeResponseDto readDetailNotice(Long id){
+    public NoticeResponseDto getDetailNotice(Long id){
 
         Notice notice = noticeRepository.findById(id)
                 .orElseThrow(() -> new IllegalArgumentException("공지사항이 존재하지 않습니다"));

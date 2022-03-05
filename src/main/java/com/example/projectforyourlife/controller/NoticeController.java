@@ -21,7 +21,7 @@ import java.util.List;
 @RequestMapping("/notices")
 public class NoticeController {
 
-    private NoticeService noticeService;
+    private final NoticeService noticeService;
 
     @PostMapping("/create")
     public ResponseEntity<NoticeResponseDto> save(@RequestBody NoticeDto noticeDto){
@@ -31,16 +31,16 @@ public class NoticeController {
     }
 
     @GetMapping("")
-    public ResponseEntity<List<NoticeListResponseDto>> readAll(
+    public ResponseEntity<List<NoticeListResponseDto>> getAll(
             @PageableDefault(size = 10, sort = "id", direction = Sort.Direction.DESC) Pageable pageable){
 
-        return new ResponseEntity(noticeService.readAllNotice(pageable).getContent(), HttpStatus.OK);
+        return new ResponseEntity(noticeService.getAllNotice(pageable).getContent(), HttpStatus.OK);
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<NoticeResponseDto> readDetail(@PathVariable("id") Long id){
+    public ResponseEntity<NoticeResponseDto> getDetail(@PathVariable("id") Long id){
 
-        return new ResponseEntity(noticeService.readDetailNotice(id), HttpStatus.OK);
+        return new ResponseEntity(noticeService.getDetailNotice(id), HttpStatus.OK);
     }
 
     @PutMapping("/{id}")

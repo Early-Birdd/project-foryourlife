@@ -31,6 +31,7 @@ public class MemberDto {
     private String name;
 
     @NotBlank(message = "닉네임을 입력해주세요.")
+    @Length(min = 2, max = 10, message = "2자리 이상 10자리 이하의 닉네임을 입력해주세요.")
     private String nickname;
 
     public Member toMember(){
